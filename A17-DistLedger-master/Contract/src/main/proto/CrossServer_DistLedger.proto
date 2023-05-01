@@ -1,0 +1,15 @@
+syntax = "proto3";
+package pt.ulisboa.tecnico.distledger.contract.distledgerserver;
+
+import "DistLedgerCommonDefinitions.proto";
+
+message PropagateStateRequest {
+  LedgerState state = 1;
+  repeated int32 replicaTS = 2;
+}
+
+message PropagateStateResponse {}
+
+service CrossServerService {
+  rpc propagateState(PropagateStateRequest) returns (PropagateStateResponse);
+}
